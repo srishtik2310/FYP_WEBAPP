@@ -14,12 +14,11 @@
     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-database.js"></script>
 </head>
 
-<body>
+<body onload="secCheck()">
     <!-- navbar -->
-
     <nav class="navbar navbar-expand-sm navbar-dark bg-success" id = "cp-menu-bar">
         <div class="container-fluid ">
-          <a class="navbar-brand " href="index.html"><i class="fa fa-home"></i></a>
+          <a class="navbar-brand"><i class="fa-solid fa-house-signal"></i> Smart Control App</i></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -33,9 +32,7 @@
                   User
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                  <li><a class="dropdown-item" href="#">Details</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Logout</a></li>
+                  <li><button class="btn btn-outline-primary" onclick="logout()">Logout</button></a></li>
                 </ul>
               </li>	
             </ul>		  

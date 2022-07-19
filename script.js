@@ -54,3 +54,19 @@ function displaySpeed(){
 }
 
 document.addEventListener("DOMContentLoaded", displaySpeed);
+
+function logout(){
+    alert("Logout successful !!. Redirecting to Login page. \nPlease press OK.");
+    window.location.href = "index.html";
+}
+
+function secCheck(){
+    var nRef = firebase.database().ref("User").child("n_users");
+    nRef.on('value', function(snapshot) {
+        var nUsers = snapshot.val();
+        if(nUsers == 0){
+            alert("Access error!!!\nPlease login to access the page.");
+            window.location.href = "index.html";
+        }
+    });
+}
