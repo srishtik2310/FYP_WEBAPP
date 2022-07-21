@@ -14,6 +14,15 @@ firebase.initializeApp(firebaseConfig);
 //set motor speed as zero initially
 document.querySelector("#motorSpeed").value = localStorage.getItem("speed");
 
+if (localStorage.getItem("status") == 1){
+    document.querySelector("#switch-1").checked = true;
+    document.querySelector("#run-status").style.backgroundColor = "#E83A14";
+}
+
+if (localStorage.getItem("dir") == 1){
+    document.querySelector("#switch-2").checked = true;
+    document.querySelector("#direction").style.backgroundColor = "#6EDCD9";
+}
 
 function changeBackground(){
     var firebaseRef = firebase.database().ref("Motor").child("Status");
@@ -23,24 +32,28 @@ function changeBackground(){
     if(sw1_pos == true){
         document.querySelector("#run-status").style.backgroundColor = "#E83A14";
         firebaseRef.set(1);
+        localStorage.setItem("status", 1);
     } 
     if (sw1_pos == false){
         document.querySelector("#run-status").style.backgroundColor = "#6BCB77";
+        localStorage.setItem("status", 0);
         firebaseRef.set(0);
     }
 }
 
 function  changeDirection(){
     var firebaseRef = firebase.database().ref("Motor").child("Direction");
-    var sw1_pos = Boolean;
-    sw1_pos = document.querySelector("#switch-2").checked;
+    var sw2_pos = Boolean;
+    sw2_pos = document.querySelector("#switch-2").checked;
 
-    if(sw1_pos == true){
+    if(sw2_pos == true){
         document.querySelector("#direction").style.backgroundColor = "#6EDCD9";
+        localStorage.setItem("dir", 1);
         firebaseRef.set(1);
     } 
-    if (sw1_pos == false){
+    if (sw2_pos == false){
         document.querySelector("#direction").style.backgroundColor = "#6BCB77";
+        localStorage.setItem("dir", 0);
         firebaseRef.set(0);
     }
 }
